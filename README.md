@@ -30,7 +30,7 @@ This is a tool that allows you to save and switch the mods you use quickly, with
 ![](/images/Sample-Shortcuts.png)
 
 
-### Why use this over just syncing mods with saves  oradding modpack paths to factorio's command line parameters?
+### Why use this over just syncing mods with saves or adding modpack paths to factorio's command line parameters?
 
 First, if you don't know what those are or how to use them:
 
