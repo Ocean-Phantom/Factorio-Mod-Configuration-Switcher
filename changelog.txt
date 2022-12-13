@@ -1,0 +1,12 @@
+==========
+Version 1.0.1
+Date: 2022/12/13
+	- Changed some of the error messages
+	- Changed folder paths to backslashes for consistency
+	- Added missing GOTO :EOF
+	- Moved a pause from just before creating new batch file to directly after
+	- Minor additions to some ECHO lines to make what's going on a bit clearer
+==========
+Version 1.0.0
+Date: 2022/12/12
+	- First Release

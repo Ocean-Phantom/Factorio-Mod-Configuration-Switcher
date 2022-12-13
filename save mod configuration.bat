@@ -1,6 +1,6 @@
 @ECHO OFF
 ECHO Path to batch file should match this format: "<Drive Letter>:\<username>\AppData\Roaming\Factorio
-ECHO Current path:
+ECHO The current path is:
 ECHO %cd%
 PAUSE
 
@@ -12,17 +12,17 @@ IF EXIST mods (
 	PAUSE 
 	goto :EOF
 )
-IF EXIST mods/mod-list.json ( 
+IF EXIST mods\mod-list.json ( 
 	ECHO "mod list detected"
 ) ELSE ( 
-	ECHO "error: mod list file not found or does not exist. Please place this file in your Factorio Directory (AppData/Roaming/Factorio) and try again."
+	ECHO "error: mod list not found or does not exist. Please place this file in your Factorio Directory (AppData/Roaming/Factorio) and try again."
 	PAUSE 
 	goto :EOF
 )
-IF EXIST mods/mod-settings.dat ( 
+IF EXIST mods\mod-settings.dat ( 
 	ECHO "mod settings detected"
 ) ELSE ( 
-	ECHO "error: mods folder not found or does not exist. Please place this file in your Factorio Directory (AppData/Roaming/Factorio) and try again."
+	ECHO "error: mod settings not found or does not exist. Please place this file in your Factorio Directory (AppData/Roaming/Factorio) and try again."
 	PAUSE 
 	goto :EOF
 )
@@ -34,13 +34,13 @@ for /F "tokens=1,2,3,4,5 delims=_" %%i in ('PowerShell -Command "& {Get-Date -fo
 	SET HOUR=%%l
 	SET MINUTE=%%m
 )
-ECHO %MONTH% %DAY% %YEAR% %HOUR% %MINUTE%
+ECHO Current Date and Time: %MONTH% %DAY% %YEAR% %HOUR% %MINUTE%
 
 ::make unique folder name for config and copy mod settings in
 SET "foldername=mod-config-%YEAR%-%MONTH%-%DAY%--%HOUR%-%MINUTE%"
 MKDIR %foldername%
 IF EXIST %foldername% (
-	ECHO "Successfully made new folder"
+	ECHO "Successfully made new folder %foldername%"
 ) ELSE (
 	ECHO "Failed to make folder"
 	PAUSE
@@ -48,12 +48,12 @@ IF EXIST %foldername% (
 )
 COPY /v "mods\mod-list.json" "%foldername%"
 COPY /v "mods\mod-settings.dat" "%foldername%"
-PAUSE
-IF EXIST %foldername%/mod-list.json (
-	IF EXIST %foldername%/mod-settings.dat (
+IF EXIST %foldername%\mod-list.json (
+	IF EXIST %foldername%\mod-settings.dat (
 		ECHO "Successfully copied mod configuration"
 	) ELSE (
 		ECHO "Something went wrong"
+		GOTO :EOF
 	)
 ) ELSE (
 	ECHO "Something went wrong"
@@ -62,13 +62,15 @@ IF EXIST %foldername%/mod-list.json (
 
 cd %foldername%
 
-::make new batch file that just overwrites config with whatever is in the folder
+::make new batch file that just overwrites the current config in \mods with whatever is in the same folder as the batch file
 ECHO @ECHO OFF>change-mod-config.bat
 ECHO COPY /v "mod-list.json" "..\mods\mod-list.json">>change-mod-config.bat
 ECHO COPY /v "mod-settings.dat" "..\mods\mod-settings.dat">>change-mod-config.bat
 ECHO ECHO mod configuration overwritten!>>change-mod-config.bat
 ECHO PAUSE>>change-mod-config.bat
 
+ECHO Press any key to open the folder.
+PAUSE
 
 start "" "%cd%"
 EXIT /b
