@@ -1,4 +1,13 @@
 ==========
+Version 1.2.0
+Date 2022/12/14
+	- NEW: Added update-mod-config.bat to files created by save mod configuration.bat
+		- added as separate file on repository
+	- save mod configuration.bat will also test if it is contained within ..\mods by the method described below
+		- removed initial locating mod folder IF-ELSE block due to redundancy
+	- update README.md
+	- change-mod-config.bat uploaded as separate file
+==========
 Version 1.1.0
 Date 2022/12/13
 	- Changed time format from 12 to 24 hours to reduce duplication of folder names
