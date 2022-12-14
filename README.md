@@ -6,7 +6,7 @@ This is a tool that allows you to save and switch the mods you use quickly, with
 
 ## Instructions
 
-1. Copy or move **save mod configuration.bat** into your Factorio appdata directory. Default for Windows is C:/Users/NAMEHERE/AppData/Roaming/Factorio 
+1. Copy or move **save mod configuration.bat** into your Factorio appdata directory. Default for Windows is C:/Users/NAMEHERE/AppData/Roaming/Factorio. *1.2.0 supports placing the batch file within mods directory (Factorio/mods)*
 ![](/images/Folder-Before.png)
 
 2. Run factorio, select whatever mods you want for a config you wish to save. Change mod settings if necessary. 
@@ -15,12 +15,21 @@ This is a tool that allows you to save and switch the mods you use quickly, with
 
 ![](/images/Running-Batch-File.png)
 
-4. It will create and open a new folder with a copy of your mod-list and mod-settings. It will also create another .bat file in that folder titled **change mod configuration.bat**
+4. It will create and open a new folder with a copy of your mod-list and mod-settings. It will also create another .bat file in that folder titled **change mod config.bat**. *Additional batch file will be created if running 1.2.0*
 ![](/images/Folder-After.png)
 
-5. Running the second .bat file will overwrite the files of the same name in the mod folder 
+5. Running **change mod config.bat** will overwrite the files of the same name in the mod folder. 
 ![](/images/Created-Folder.png)
 
+## Version notes:
+
+### Versions 1.1.0 and above will have version numbers appended to all .bat files
+
+ - 1.1.0
+    - **change mod config.bat** supports being placed inside Factorio/mods
+ - 1.2.0
+    - **save mod configuration.bat** supports being placed inside Factorio/mods
+    - Additional Batch File will be created: **Update mod config.bat**. Running this will replace the current config in its folder with whatever settings are currently stored inside Factorio/mods. (Also supports being placed inside Factorio/mods)
 
 ### Recommendations:
  
@@ -30,7 +39,7 @@ This is a tool that allows you to save and switch the mods you use quickly, with
 ![](/images/Sample-Shortcuts.png)
 
 
-### Why use this over just syncing mods with saves or adding modpack paths to factorio's command line parameters?
+### Why use this over just syncing mods with saves or adding modpack paths to Factorio's command line parameters?
 
 First, if you don't know what those are or how to use them:
 
@@ -50,7 +59,3 @@ With the batch file provided here, much like the in-game mod syncing, all versio
 TLDR:
 
 This can be used whenever the version numbers do not matter. If the version of the mods does matter, use the command line method. Sync mods with save is always a convenient option, provided you don't mind waiting for the game to load :)
-
-## Potential issues:
-
- - There is no way to 'update' a configuration with this script. If you wish to change settings, add or remove mods, etc., you will have to save the new config. Either run the script again (which creates a new config), or copy & replace **mod-list.json** and **mod-settings.dat** from your mods folder into the appropriate configuration folder.

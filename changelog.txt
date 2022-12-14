@@ -1,4 +1,12 @@
 ==========
+Version 1.1.0
+Date 2022/12/13
+	- Changed time format from 12 to 24 hours to reduce duplication of folder names
+	- change-mod-config.bat will now test if the folder containing it is in the same folder (..\mods) or if it is inside the mods folder (by searching for mod-settings and mod-list)
+	- Expanded error checking in mod-config.bat
+	- Changed some GOTO :EOF to EXIT /b 1 to ensure an errorlevel is outputted
+	- Added Version Numbers to all .bat files (including created ones)
+==========
 Version 1.0.1
 Date: 2022/12/13
 	- Changed some of the error messages
